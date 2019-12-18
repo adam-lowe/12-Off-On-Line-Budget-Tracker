@@ -2,8 +2,8 @@
 
 ## Outline
 
-Add offline functionality to budget tracker application.
+With the use of service worker caches, add offline functionality to budget tracker application.
 
 ## Screenshot
 
-   ![Output](./Annotation-2019-12-16-233135.png)
+   ![Output](./budget.png)
