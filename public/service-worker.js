@@ -1,10 +1,10 @@
 const FILES_TO_CACHE = [
   "/",
   "/index.html",
-  "/style.css",
+  "/assets/css/style.css",
   "/manifest.json",
   "/index.js",
-  "/db.js"
+  "/assets/js/db.js"
 ];
 
 const CACHE_NAME = "static-cache-v2";
@@ -37,6 +37,19 @@ self.addEventListener("activate", function(evt) {
   );
 
   self.clients.claim();
+});
+
+//cache cleanup
+self.addEventListener("activate", event => {
+  event.waitUntil(
+    caches.keys().then(keyNames => {
+      return Promise.all(keyNames.map(key => {
+        if (key !== CACHE_NAME && key !== DATA_CACHE_NAME) {
+          return caches.delete(key);
+        };
+      }));
+    }));
+  self.ClientRectList.claim();
 });
 
 // fetch
